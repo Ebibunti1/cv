@@ -1,0 +1,25 @@
+progress {
+  /* Style the progress bar */
+
+  height: 20px;
+  width: 40%;
+  background-color: #ddd;
+  border-radius: 4px;
+}
+/* Style the value of the progress bar */
+progress::-webkit-progress-value {
+  padding: 10px;
+  background-color: #4caf50;
+  border-radius: 4px;
+}
+p{
+  text-align: center;
+}
+h2{
+  text-align: center;
+  padding: 0 0 0 0 ;
+}
+.skill{
+  text-align: -webkit-left;
+  padding: 0 0 0 10px;
+}

@@ -1,0 +1,61 @@
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 68.95%;
+    width: 50%;
+    height: 65%;
+    background-color: deepskyblue;
+    z-index: -1;
+}
+img.center{
+    display: block;
+    margin: auto;
+    z-index: 0;
+}
+img.icon{
+    display: block;
+    margin: 0 0 0 0;
+
+}
+header{
+    font-size: 12px;
+    text-align: center;
+}
+header ul{
+    margin: 0;
+    padding: 0 0 0 40%;
+    list-style: none;
+}
+header li{
+    display: inline-block;
+}
+header li a{
+    padding: 15px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+header li a:hover {
+    color: chartreuse;
+    cursor: pointer;
+}
+.text{
+    padding: 0 0 0 10%;
+    font-size: 50px;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    position: absolute;
+    z-index: 1;
+
+}
+
+.shake{
+    padding: 5% 0 0 5%;
+    position: absolute;
+    z-index: 1;
+}
