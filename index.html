@@ -1,140 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Ebisa's Personal Website</title>
-    <link  rel="stylesheet" href="index2.css" >
-    <script src="js2.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-    <script>
-      $(document).ready(function (){
-         $(".dark").click(function (){
-            $(this).hide();
-            $('body').css('background', 'white')
-            $('body').css('color', '#151515')
-            $('.light').show();
-        })
-        $(".light").click(function (){
-            $(this).hide();
-            $('body').css('background', '#121212')
-            $('body').css('color', 'white')
-
-
-            $(".dark").show();
-        })
-      })
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebisa's Personal Website</title>
+  <link rel="stylesheet" href="index2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".dark").click(function () {
+        $(this).hide();
+        $('body').css('background', 'white')
+        $('body').css('color', '#151515')
+        $('.light').show();
+      });
+      $(".light").click(function () {
+        $(this).hide();
+        $('body').css('background', '#121212')
+        $('body').css('color', 'white')
+        $(".dark").show();
+      });
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f4f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1e293b;
+      color: white;
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav ul li a:hover {
+      color: #38bdf8;
+    }
+    header, section {
+      max-width: 900px;
+      margin: 5rem auto 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h1, h2, h3 {
+      color: #1e293b;
+    }
+    .skills progress {
+      width: 100%;
+      height: 1.2rem;
+    }
+    .skills p {
+      margin: 0.5rem 0 0.2rem;
+    }
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem;
+      background-color: #1e293b;
+    }
+    .wrapper img {
+      width: 40px;
+      height: 40px;
+    }
+    .hover-fx {
+      background: white;
+      border-radius: 50%;
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+    .hover-fx:hover {
+      transform: scale(1.1);
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      padding: 1rem;
+    }
+  </style>
 </head>
-
-
 <body>
-
-    <nav id="section1">
-
-        <a  href="index.html"><img src="ai.png" class="icon" alt=" " width="40" height="40"></a>
-        <img src="lightoff.png", class="dark" width="20" height="20">
-        <img src="lighton.png", class="light" width="20" height="20">
-      <ul>
-          <li ><a href="index.html"> Home</a></li>
-          <li><a href="index.html#About-section">About</a></li>
-          <li><a href="index.html#mid-section-skill">Skills</a></li>
-          <li><a href="index.html#mid-section-timeline">Timeline</a></li>
-          <li><a href="index.html#mid-section-projects">Projects</a></li>
-          <li><a href="index.html#mid-section-contacts">Contact</a></li>
-      </ul>
-
-    </nav>
-
-    <div id="top-section">
-        <p id="text"> HELLO 👋 <br>Welcome to Ebisa's <br>Personal Website🤣</p>
-        <p class="spinner" ></p>
-        <img id="ibsa-profile"src="ebisaAI.jpeg" alt="Ebisa Profile" width="800"height="100%">
+  <nav>
+    <a href="index.html"><img src="ai.png" class="icon" alt="AI Icon" width="40" height="40"></a>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#About-section">About</a></li>
+      <li><a href="#mid-section-skill">Skills</a></li>
+      <li><a href="#mid-section-timeline">Timeline</a></li>
+      <li><a href="#mid-section-projects">Projects</a></li>
+      <li><a href="#mid-section-contacts">Contact</a></li>
+    </ul>
+    <div>
+      <img src="lightoff.png" class="dark" width="20" height="20">
+      <img src="lighton.png" class="light" width="20" height="20">
     </div>
-    <div id="mid-section-about" >
-        <div id="about-img">
-            <img src="—Pngtree—computer%20programming%20language%20colorful%20_4962270.png" alt="" width="500" height="300">
-            <img src="—Pngtree—elegant%20yellow%20sport%20car_6688399.png" alt="sport car" width="500" height="500">
-        </div>
-        <div id="About-section">
-            <h1><strong style="text-align: center">About Me</strong></h1>
-            <p class="par">I'm currently a freshman computer
-            science student at Western Michigan University.
-            I am excited to learn more about computer science,
-            and eventually work in the field. I am particularly
-            interested in computer programming and AI.
-            <br> <br><br><br> I was born and raised in Ethiopia, where
-            I also discovered a deep passion for sweet coffee
-            and a strong interest in how technology influences
-            human behaviour. People from unique places and
-            my own experiences outside of work both readily
-            inspire me.<br><br><br><br> I have several hobbies that I enjoy
-            in my free time.One of my favorites is driving cars.
-            I find it really satisfying to be behind the wheel of
-            a car and feel the power of the engine. It's a great way
-            to clear my mind and relax. <br><br><br><br> I also enjoy learning about
-            different car models and features, and keeping up with the
-            latest trends in the automotive industry.<br><br><br><br>
-            Another hobby I have is coding. I find it very fulfilling to
-            be able to create something from scratch, and I've always
-            been fascinated by how a few lines of code can turn into a
-            functional program. I like to spend time experimenting with
-            new languages and frameworks, and discovering new ways to
-            solve problems.<br><br><br><br> Lastly, I enjoy solving problems in general. I find the process
-            of breaking down a complex problem into smaller pieces and
-            finding a solution to be very satisfying.This applies to
-            my coding hobby, as well as to my daily life, as solving
-            problems could be in any context.</p>
-        </div>
-    </div>
-    <div id="mid-section-skill">
-        <h3 style="text-align: center">Skills</h3>
-        <h2 style="text-align: center">Technical Expertise</h2>
-        <p style="text-align: center">"I am driven by my curiosity and desire to understand and work with cutting-edge technologies."</p>
-        <div id="skill_list">
-        <p class="skill">Python</p>
-        <progress value="60" max="100">60%</progress>
-        <p class="skill">Visual Studio</p>
-        <progress value="70" max="100">70%</progress>
-        <p class="skill">HTML</p>
-        <progress value="60" max="100">60%</progress>
-        <p class="skill">Robot Programming</p>
-        <progress value="60" max="100">80%</progress>
-        </div>
-    </div>
-    <div id="mid-section-timeline">
-        <h2>Timeline</h2>
-          <ul>
-            <li>
-              <h3>High School Graduation</h3>
-              <p>June 2022</p>
-            </li>
-            <li>
-              <h3>Wester Michigan University</h3>
-              <p>Aug 2022 - present</p>
-            </li>
-          </ul>
-    </div>
-    <div id="mid-section-projects">
-        <p>Projects goes hear</p>
-    </div>
+  </nav>
 
-    <div id="mid-section-contacts">
-    </div>
+  <header>
+    <h1>Hello 👋 Welcome to Ebisa's Website</h1>
+    <img src="ebisaAI.jpeg" alt="Ebisa Profile" style="max-width: 100%; border-radius: 12px;">
+  </header>
 
-    <div class="wrapper">
-        <a class="hover-fx" href="https://twitter.com">
-            <i class="fa fa-twitter"><img src="instagram.png"></i></a>
-        <a class="hover-fx"href="https://twitter.com">
-            <i class="fa fa-twitter"><img src="twitter.png"> </i></a>
-        <a class="hover-fx"href="https://twitter.com">
-            <i class="fa fa-twitter"><img src="facebook-logo-2019.png"></i></a>
-        <a class="hover-fx" href="tel:616-262-3866">
-            <i class="fa fa-twitter"><img src="phone.png"></i></a>
-        <a class="hover-fx"href="https://twitter.com">
-            <i class="fa fa-twitter"><img src="email.png"></i></a>
-    </div>
+  <section id="About-section">
+    <h2>About Me</h2>
+    <p>I’m a CS student at WMU with a strong interest in AI and robotics. Born and raised in Ethiopia, I’m passionate about sweet coffee, problem-solving, coding, and cars.</p>
+  </section>
 
+  <section id="mid-section-skill" class="skills">
+    <h2>Technical Skills</h2>
+    <p>"Driven by curiosity and a love for solving problems with tech."</p>
+    <p>Python</p><progress value="60" max="100"></progress>
+    <p>Visual Studio</p><progress value="70" max="100"></progress>
+    <p>HTML</p><progress value="60" max="100"></progress>
+    <p>Robot Programming</p><progress value="80" max="100"></progress>
+  </section>
 
+  <section id="mid-section-timeline">
+    <h2>Timeline</h2>
+    <ul>
+      <li><strong>June 2022:</strong> High School Graduation</li>
+      <li><strong>August 2022 – Present:</strong> Western Michigan University</li>
+    </ul>
+  </section>
+
+  <section id="mid-section-projects">
+    <h2>Projects</h2>
+    <p>Coming soon...</p>
+  </section>
+
+  <section id="mid-section-contacts">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:your@email.com">ebibunti@email.com</a></p>
+    <p>Phone: <a href="tel:+16162623866">(616) 262-3866</a></p>
+  </section>
+
+  <div class="wrapper">
+    <a class="hover-fx" href="https://twitter.com"><img src="twitter.png" alt="Twitter"></a>
+    <a class="hover-fx" href="https://instagram.com"><img src="instagram.png" alt="Instagram"></a>
+    <a class="hover-fx" href="https://facebook.com"><img src="facebook-logo-2019.png" alt="Facebook"></a>
+    <a class="hover-fx" href="tel:616-262-3866"><img src="phone.png" alt="Phone"></a>
+    <a class="hover-fx" href="mailto:your@email.com"><img src="email.png" alt="Email"></a>
+  </div>
+
+  <footer>
+    <p>© 2025 Ebisa Bunti. All rights reserved.</p>
+  </footer>
 </body>
 </html>
