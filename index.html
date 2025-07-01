@@ -3,164 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ebisa's Personal Website</title>
-  <link rel="stylesheet" href="index2.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      $(".dark").click(function () {
-        $(this).hide();
-        $('body').css('background', 'white')
-        $('body').css('color', '#151515')
-        $('.light').show();
-      });
-      $(".light").click(function () {
-        $(this).hide();
-        $('body').css('background', '#121212')
-        $('body').css('color', 'white')
-        $(".dark").show();
-      });
-    });
-  </script>
+  <title>Ebisa | Futuristic CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f4f4f8;
-      color: #333;
+    :root {
+      --neon-blue: #05d9e8;
+      --dark-bg: #0d0221;
+    }
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      background: var(--dark-bg);
+      font-family: 'Rajdhani', sans-serif;
+      color: #ffffff;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(-45deg, #ff2a6d, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      z-index: -2;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     nav {
-      position: fixed;
-      width: 100%;
-      top: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background-color: #1e293b;
-      color: white;
-      padding: 0.5rem 1rem;
-      z-index: 1000;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--neon-blue);
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
+      gap: 1.5rem;
     }
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: 600;
+      transition: 0.3s;
     }
     nav ul li a:hover {
-      color: #38bdf8;
+      color: var(--neon-blue);
     }
-    header, section {
+    header {
+      text-align: center;
+      padding: 6rem 2rem 2rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 15px var(--neon-blue);
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #cbd5e1;
+    }
+    section {
       max-width: 900px;
-      margin: 5rem auto 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin: 3rem auto;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(5, 217, 232, 0.2);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(5, 217, 232, 0.1);
     }
-    h1, h2, h3 {
-      color: #1e293b;
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--neon-blue);
+      text-align: center;
     }
-    .skills progress {
+    progress {
       width: 100%;
-      height: 1.2rem;
+      height: 1rem;
+      appearance: none;
+      background-color: #222;
+      border-radius: 10px;
     }
-    .skills p {
-      margin: 0.5rem 0 0.2rem;
+    progress::-webkit-progress-bar {
+      background-color: #222;
+      border-radius: 10px;
+    }
+    progress::-webkit-progress-value {
+      background-color: var(--neon-blue);
+      border-radius: 10px;
+    }
+    .timeline li {
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--neon-blue);
     }
     .wrapper {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
       padding: 2rem;
-      background-color: #1e293b;
     }
-    .wrapper img {
+    .hover-fx img {
       width: 40px;
       height: 40px;
+      transition: transform 0.3s ease, filter 0.3s;
     }
-    .hover-fx {
-      background: white;
-      border-radius: 50%;
-      padding: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s;
-    }
-    .hover-fx:hover {
-      transform: scale(1.1);
+    .hover-fx img:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 8px var(--neon-blue));
     }
     footer {
       text-align: center;
+      padding: 2rem;
       font-size: 0.9rem;
-      color: #888;
-      padding: 1rem;
+      background: rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html"><img src="ai.png" class="icon" alt="AI Icon" width="40" height="40"></a>
+    <div class="logo">Ebisa</div>
     <ul>
       <li><a href="#">Home</a></li>
-      <li><a href="#About-section">About</a></li>
-      <li><a href="#mid-section-skill">Skills</a></li>
-      <li><a href="#mid-section-timeline">Timeline</a></li>
-      <li><a href="#mid-section-projects">Projects</a></li>
-      <li><a href="#mid-section-contacts">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <div>
-      <img src="lightoff.png" class="dark" width="20" height="20">
-      <img src="lighton.png" class="light" width="20" height="20">
-    </div>
   </nav>
 
   <header>
-    <h1>Hello 👋 Welcome to Ebisa's Website</h1>
-    <img src="ebisaAI.jpeg" alt="Ebisa Profile" style="max-width: 100%; border-radius: 12px;">
+    <h1>HELLO, I'M <span style="color: var(--neon-blue)">EBISA</span></h1>
+    <p>Creative Developer | AI Enthusiast | Futurist</p>
   </header>
 
-  <section id="About-section">
+  <section id="about">
     <h2>About Me</h2>
-    <p>I’m a CS student at WMU with a strong interest in AI and robotics. Born and raised in Ethiopia, I’m passionate about sweet coffee, problem-solving, coding, and cars.</p>
+    <p>I’m a Computer Science student at WMU with passion for AI, robotics, and tech innovation. I thrive on solving problems and building futuristic tools that empower others.</p>
   </section>
 
-  <section id="mid-section-skill" class="skills">
-    <h2>Technical Skills</h2>
-    <p>"Driven by curiosity and a love for solving problems with tech."</p>
-    <p>Python</p><progress value="60" max="100"></progress>
-    <p>Visual Studio</p><progress value="70" max="100"></progress>
-    <p>HTML</p><progress value="60" max="100"></progress>
-    <p>Robot Programming</p><progress value="80" max="100"></progress>
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>Python</p>
+    <progress value="60" max="100"></progress>
+    <p>Visual Studio</p>
+    <progress value="70" max="100"></progress>
+    <p>HTML</p>
+    <progress value="60" max="100"></progress>
+    <p>Robot Programming</p>
+    <progress value="80" max="100"></progress>
   </section>
 
-  <section id="mid-section-timeline">
-    <h2>Timeline</h2>
-    <ul>
+  <section id="timeline">
+    <h2>Experience Timeline</h2>
+    <ul class="timeline">
       <li><strong>June 2022:</strong> High School Graduation</li>
-      <li><strong>August 2022 – Present:</strong> Western Michigan University</li>
+      <li><strong>August 2022 – Present:</strong> Computer Science @ Western Michigan University</li>
     </ul>
   </section>
 
-  <section id="mid-section-projects">
+  <section id="projects">
     <h2>Projects</h2>
-    <p>Coming soon...</p>
+    <p>🚧 Futuristic projects incoming! Stay tuned for interactive showcases and experimental builds.</p>
   </section>
 
-  <section id="mid-section-contacts">
+  <section id="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:your@email.com">ebibunti@email.com</a></p>
-    <p>Phone: <a href="tel:+16162623866">(616) 262-3866</a></p>
+    <p>Email: <a href="mailto:your@email.com" style="color: var(--neon-blue)">your@email.com</a></p>
+    <p>Phone: <a href="tel:+16162623866" style="color: var(--neon-blue)">(616) 262-3866</a></p>
   </section>
 
   <div class="wrapper">
@@ -172,7 +203,7 @@
   </div>
 
   <footer>
-    <p>© 2025 Ebisa Bunti. All rights reserved.</p>
+    <p>© 2025 Ebisa Bunti | Designed in cyberpunk spirit ⚡</p>
   </footer>
 </body>
 </html>
