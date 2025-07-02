@@ -1,209 +1,1159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ebisa | Futuristic CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <style>
-    :root {
-      --neon-blue: #05d9e8;
-      --dark-bg: #0d0221;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      background: var(--dark-bg);
-      font-family: 'Rajdhani', sans-serif;
-      color: #ffffff;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(-45deg, #ff2a6d, #e73c7e, #23a6d5, #23d5ab);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      z-index: -2;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    nav {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--neon-blue);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    nav ul li a:hover {
-      color: var(--neon-blue);
-    }
-    header {
-      text-align: center;
-      padding: 6rem 2rem 2rem;
-    }
-    header h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 15px var(--neon-blue);
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      color: #cbd5e1;
-    }
-    section {
-      max-width: 900px;
-      margin: 3rem auto;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(5, 217, 232, 0.2);
-      border-radius: 15px;
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(5, 217, 232, 0.1);
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--neon-blue);
-      text-align: center;
-    }
-    progress {
-      width: 100%;
-      height: 1rem;
-      appearance: none;
-      background-color: #222;
-      border-radius: 10px;
-    }
-    progress::-webkit-progress-bar {
-      background-color: #222;
-      border-radius: 10px;
-    }
-    progress::-webkit-progress-value {
-      background-color: var(--neon-blue);
-      border-radius: 10px;
-    }
-    .timeline li {
-      margin-bottom: 1rem;
-      padding-left: 1rem;
-      border-left: 3px solid var(--neon-blue);
-    }
-    .wrapper {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 2rem;
-    }
-    .hover-fx img {
-      width: 40px;
-      height: 40px;
-      transition: transform 0.3s ease, filter 0.3s;
-    }
-    .hover-fx img:hover {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 8px var(--neon-blue));
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      background: rgba(0,0,0,0.5);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Ebisa Bunti, a creative developer and digital artist specializing in web development and 3D visualizations.">
+    <meta name="keywords" content="Ebisa Bunti, web developer, digital artist, Three.js, React, portfolio">
+    <meta name="author" content="Ebisa Bunti">
+    <title>Ebisa Bunti | System Breach</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Three.js Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r170/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.170.0/examples/js/controls/OrbitControls.min.js"></script>
+
+    <style>
+        :root {
+            --accent-red: #ff2a6d;
+            --accent-blue: #05d9e8;
+            --accent-purple: #d300c5;
+            --accent-green: #00ff85;
+            --background-dark: #0d0221;
+            --text-light: #d1f7ff;
+            --border-color: rgba(255, 42, 109, 0.6);
+            
+            /* Light mode variables */
+            --background-light: #f0f0f5;
+            --text-dark: #1a1a2e;
+            --border-color-light: rgba(5, 217, 232, 0.6);
+        }
+
+        body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            font-family: 'Orbitron', 'Share Tech Mono', monospace;
+            overflow-x: hidden;
+            transition: all 0.5s ease;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 109, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(5, 217, 232, 0.1) 0%, transparent 20%),
+                linear-gradient(to bottom, transparent, var(--background-dark));
+        }
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(5, 217, 232, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 109, 0.1) 0%, transparent 20%),
+                linear-gradient(to bottom, transparent, var(--background-light));
+        }
+
+        /* Circuit board background pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 42, 109, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(5, 217, 232, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: circuitMove 20s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Enhanced Glitch Effect */
+        .glitch-wrapper {
+            position: relative;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px var(--accent-blue));
+        }
+        
+        .glitch {
+            font-size: 4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            color: var(--text-light);
+            text-shadow: 
+                0 0 10px var(--accent-blue),
+                0 0 20px var(--accent-blue),
+                0 0 30px var(--accent-blue);
+            letter-spacing: 3px;
+        }
+        
+        .light-mode .glitch {
+            color: var(--text-dark);
+            text-shadow: 
+                0 0 5px var(--accent-blue),
+                0 0 10px rgba(5, 217, 232, 0.5);
+        }
+        
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-dark);
+            overflow: hidden;
+        }
+        
+        .light-mode .glitch::before,
+        .light-mode .glitch::after {
+            background: var(--background-light);
+        }
+        
+        .glitch::before {
+            left: 4px;
+            text-shadow: 
+                -4px 0 var(--accent-purple),
+                -4px 0 10px var(--accent-purple);
+            animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        }
+        
+        .glitch::after {
+            left: -4px;
+            text-shadow: 
+                4px 0 var(--accent-green),
+                4px 0 10px var(--accent-green);
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+        }
+        
+        @keyframes glitch-anim-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+
+        /* Enhanced Typewriter Effect */
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid var(--accent-blue);
+            animation: 
+                typing 3.5s steps(40, end), 
+                blink-caret .75s step-end infinite,
+                pulse 2s infinite alternate;
+            animation-fill-mode: forwards;
+            width: 0;
+            text-shadow: 0 0 5px var(--accent-blue);
+        }
+        
+        .light-mode .typewriter {
+            color: var(--text-dark);
+            text-shadow: 0 0 3px var(--accent-blue);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-blue); }
+        }
+        
+        @keyframes pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            background-color: rgba(13, 2, 33, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--accent-purple);
+            box-shadow: 0 0 20px rgba(211, 0, 197, 0.3);
+        }
+        
+        .light-mode nav {
+            background-color: rgba(240, 240, 245, 0.9);
+            border-bottom: 1px solid var(--accent-blue);
+            box-shadow: 0 0 20px rgba(5, 217, 232, 0.2);
+        }
+        
+        nav a {
+            color: var(--text-light);
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .light-mode nav a {
+            color: var(--text-dark);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-red);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        nav a:hover {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px var(--accent-blue);
+        }
+        
+        .light-mode nav a:hover {
+            color: var(--accent-purple);
+            text-shadow: 0 0 5px rgba(211, 0, 197, 0.5);
+        }
+
+        /* Enhanced Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 42, 109, 0.2);
+            border: 1px solid var(--accent-red);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 42, 109, 0.3);
+        }
+        
+        .light-mode .theme-toggle {
+            background: rgba(5, 217, 232, 0.1);
+            border: 1px solid var(--accent-blue);
+            box-shadow: 0 0 10px rgba(5, 217, 232, 0.2);
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 42, 109, 0.3);
+            box-shadow: 0 0 15px var(--accent-red);
+            transform: rotate(15deg);
+        }
+        
+        .light-mode .theme-toggle:hover {
+            background: rgba(5, 217, 232, 0.2);
+            box-shadow: 0 0 15px var(--accent-blue);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.3rem;
+            color: var(--accent-red);
+            transition: all 0.3s ease;
+        }
+        
+        .light-mode .theme-toggle i {
+            color: var(--accent-blue);
+        }
+        
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+        
+        .light-mode .theme-toggle .fa-sun {
+            display: block;
+        }
+        
+        .light-mode .theme-toggle .fa-moon {
+            display: none;
+        }
+
+        /* Enhanced Holographic Cards */
+        .holographic-card {
+            background: rgba(13, 2, 33, 0.6);
+            border: 1px solid var(--accent-blue);
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 0 10px rgba(5, 217, 232, 0.3),
+                inset 0 0 10px rgba(5, 217, 232, 0.2);
+            overflow: hidden;
+        }
+        
+        .holographic-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(5, 217, 232, 0.1),
+                transparent,
+                transparent,
+                transparent
+            );
+            transform: rotate(30deg);
+            animation: hologram 6s linear infinite;
+        }
+        
+        .light-mode .holographic-card {
+            background: rgba(240, 240, 245, 0.8);
+            border: 1px solid var(--accent-blue);
+            box-shadow: 
+                0 0 10px rgba(5, 217, 232, 0.2),
+                inset 0 0 10px rgba(5, 217, 232, 0.1);
+        }
+        
+        .holographic-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 0 20px var(--accent-blue),
+                0 0 30px rgba(5, 217, 232, 0.5);
+        }
+        
+        .light-mode .holographic-card:hover {
+            box-shadow: 
+                0 0 15px var(--accent-blue),
+                0 0 25px rgba(5, 217, 232, 0.3);
+        }
+        
+        @keyframes hologram {
+            0% { transform: rotate(30deg) translate(-10%, -10%); }
+            100% { transform: rotate(30deg) translate(10%, 10%); }
+        }
+
+        /* Enhanced Terminal */
+        .cyber-terminal {
+            background: rgba(13, 2, 33, 0.7);
+            border: 1px solid var(--accent-blue);
+            box-shadow: 
+                0 0 15px var(--accent-blue),
+                inset 0 0 10px rgba(5, 217, 232, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-terminal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    rgba(5, 217, 232, 0.1) 1px, 
+                    transparent 1px
+                );
+            background-size: 100% 2px;
+            animation: scanlines 1s linear infinite;
+            pointer-events: none;
+        }
+        
+        .terminal-header {
+            background: linear-gradient(to right, #0d0221, #1a0b36, #0d0221);
+            border-bottom: 1px solid var(--accent-blue);
+        }
+        
+        .terminal-buttons span {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        .terminal-title {
+            text-shadow: 0 0 5px var(--accent-blue);
+        }
+        
+        .terminal-body {
+            position: relative;
+            background: rgba(13, 2, 33, 0.5);
+        }
+        
+        .terminal-body p {
+            text-shadow: 0 0 3px var(--accent-blue);
+        }
+        
+        .cyber-link {
+            position: relative;
+            padding-left: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-link::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes scanlines {
+            from { background-position: 0 0; }
+            to { background-position: 0 100%; }
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Enhanced Timeline */
+        .timeline-node {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            box-shadow: 0 0 10px var(--accent-blue);
+        }
+        
+        .timeline-node::after {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            box-shadow: 0 0 15px var(--accent-blue);
+            border: 2px solid var(--background-dark);
+            animation: pulse 2s infinite;
+        }
+        
+        .light-mode .timeline-node::after {
+            border: 2px solid var(--background-light);
+        }
+        
+        .node-date {
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--accent-red);
+        }
+
+        /* Enhanced Skill Tags */
+        .cyber-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba(255, 42, 109, 0.2);
+            border: 1px solid var(--accent-red);
+            box-shadow: 0 0 5px rgba(255, 42, 109, 0.3);
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cyber-tag:hover {
+            background: rgba(255, 42, 109, 0.4);
+            box-shadow: 0 0 10px var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Scroll Prompt */
+        .cyber-scroll-prompt {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite, pulse 2s infinite alternate;
+        }
+        
+        .cyber-arrow {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-color: transparent transparent var(--accent-blue) var(--accent-blue);
+            transform: rotate(-45deg);
+            box-shadow: 0 0 10px var(--accent-blue);
+            animation: arrow-pulse 1.5s infinite alternate;
+        }
+        
+        @keyframes arrow-pulse {
+            from { opacity: 0.5; transform: translateY(0) rotate(-45deg); }
+            to { opacity: 1; transform: translateY(-10px) rotate(-45deg); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            nav a {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
-<body>
-  <nav>
-    <div class="logo">Ebisa</div>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<body class="bg-gray-900 text-gray-200 font-mono">
 
-  <header>
-    <h1>HELLO, I'M <span style="color: var(--neon-blue)">EBISA</span></h1>
-    <p>Creative Developer | AI Enthusiast | Futurist</p>
-  </header>
+    <!-- Enhanced Navigation -->
+    <nav class="fixed top-0 w-full p-4 z-50">
+        <ul class="flex justify-center space-x-4 md:space-x-8 items-center">
+            <li><a href="#skills" class="hover:text-blue-400 transition-all duration-300">SKILLS</a></li>
+            <li><a href="#experience" class="hover:text-purple-400 transition-all duration-300">EXPERIENCE</a></li>
+            <li><a href="#contact" class="hover:text-green-400 transition-all duration-300">CONTACT</a></li>
+            <li>
+                <button id="theme-toggle" class="theme-toggle ml-4" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </li>
+        </ul>
+    </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a Computer Science student at WMU with passion for AI, robotics, and tech innovation. I thrive on solving problems and building futuristic tools that empower others.</p>
-  </section>
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <p>Python</p>
-    <progress value="60" max="100"></progress>
-    <p>Visual Studio</p>
-    <progress value="70" max="100"></progress>
-    <p>HTML</p>
-    <progress value="60" max="100"></progress>
-    <p>Robot Programming</p>
-    <progress value="80" max="100"></progress>
-  </section>
+        <!-- Enhanced Hero Section -->
+        <header class="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-purple-500 opacity-20 blur-3xl animate-float"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-blue-400 opacity-20 blur-3xl animate-float-delay"></div>
+            </div>
+            
+            <div class="glitch-wrapper z-10">
+                <div class="glitch text-4xl sm:text-5xl md:text-7xl" data-text="EBISA BUNTI">EBISA BUNTI</div>
+            </div>
+            
+            <p class="typewriter mt-6 text-lg md:text-2xl z-10" 
+               data-text="CODER | COFFEE ENTHUSIAST | ROAD TRIPPER">
+               CODER | COFFEE ENTHUSIAST | ROAD TRIPPER
+            </p>
+            
+            <div class="cyber-scroll-prompt z-10">
+                <div class="cyber-arrow"></div>
+            </div>
+        </header>
+        <!-- About Me Section -->
+        <section id="about" class="py-16 relative">
+            <div class="absolute -top-10 left-0 right-0 h-20 bg-gradient-to-b from-purple-900/50 to-transparent z-0"></div>
+            
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 relative">
+                <span class="text-purple-400">//</span> ABOUT ME
+                <span class="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent"></span>
+            </h2>
+            
+            <div class="cyber-terminal holographic-card max-w-3xl mx-auto rounded-lg overflow-hidden">
+                <div class="terminal-header px-4 py-3 flex items-center bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+                    <div class="terminal-buttons flex space-x-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                    <div class="terminal-title text-center flex-grow text-sm font-mono text-blue-300">
+                        BIO_PROFILE.EXE
+                    </div>
+                </div>
+                <div class="terminal-body p-6 font-mono text-sm">
+                    <p class="text-green-400">> INITIALIZING PERSONAL PROFILE...</p>
+                    <p class="text-blue-300 mb-4">> SYSTEM ANALYSIS COMPLETE:</p>
+                    
+                    <div class="space-y-4">
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            Passionate coder with a love for coffee and long drives <span class="text-red-400 ml-2">☕🚗</span>
+                        </p>
+                        
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            When not coding, you'll find me either sipping coffee or exploring the open road
+                        </p>
+                        
+                        <p class="text-blue-300 mt-6">> TECHNICAL PROFILE:</p>
+                        
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            <span class="text-green-400">Fluent in:</span> Python, C, HTML, CSS, and more
+                        </p>
+                        
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            Coding isn't just a skill - it's a <span class="text-red-400">passion</span>
+                        </p>
+                        
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            Coffee fuels my <span class="text-blue-400">creativity</span> and keeps me going
+                        </p>
+                        
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            Long drives help clear my mind and find <span class="text-green-400">inspiration</span>
+                        </p>
+                        
+                        <p class="text-blue-300 mt-6">> COLLABORATION PROTOCOL:</p>
+                        
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            Always up for new coding challenges and collaborations
+                        </p>
+                        
+                        <p class="text-green-400 mt-6">> FINAL MESSAGE:</p>
+                        <p class="text-yellow-300 flex items-start">
+                            <span class="text-purple-400 mr-2">❯</span>
+                            Let's <span class="text-blue-400">code</span>, <span class="text-red-400">sip coffee</span>, and <span class="text-green-400">explore</span> new horizons together! <span class="text-yellow-400 ml-2">🚀</span>
+                        </p>
+                    </div>
+                    
+                    <p class="mt-6 text-green-400">> <span class="animate-pulse">_</span></p>
+                </div>
+            </div>
+        </section>
 
-  <section id="timeline">
-    <h2>Experience Timeline</h2>
-    <ul class="timeline">
-      <li><strong>June 2022:</strong> High School Graduation</li>
-      <li><strong>August 2022 – Present:</strong> Computer Science @ Western Michigan University</li>
-    </ul>
-  </section>
+        <!-- Main Content Wrapper -->
+        <main class="space-y-24 md:space-y-32 mb-24 relative z-10">
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <p>🚧 Futuristic projects incoming! Stay tuned for interactive showcases and experimental builds.</p>
-  </section>
+            <!-- Enhanced 3D Skills Sphere Section -->
+            <section id="skills" class="py-16 relative">
+                <div class="absolute -top-10 left-0 right-0 h-20 bg-gradient-to-b from-blue-900/50 to-transparent z-0"></div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 relative">
+                    <span class="text-blue-400">//</span> SKILLS MATRIX
+                    <span class="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
+                </h2>
+                
+                <div id="skillSphereContainer" class="mx-auto max-w-4xl relative h-96">
+                    <!-- Loading indicator -->
+                    <div id="loading" class="absolute inset-0 flex items-center justify-center z-10">
+                        <div class="text-center">
+                            <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-400 mb-2"></div>
+                            <p class="text-blue-300">INITIALIZING SKILL MATRIX...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fallback content -->
+                    <div id="fallback-skills" class="hidden grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
+                        <!-- Skills will be populated here if 3D fails -->
+                    </div>
+                </div>
+                
+                <div class="flex justify-center items-center space-x-6 mt-8 text-sm">
+                    <button onclick="filterSkills('coding')" class="flex items-center hover:text-green-400 transition-colors">
+                        <span class="w-3 h-3 rounded-full bg-green-400 mr-2 animate-pulse"></span>
+                        <span>CODING</span>
+                    </button>
+                    <button onclick="filterSkills('design')" class="flex items-center hover:text-purple-400 transition-colors">
+                        <span class="w-3 h-3 rounded-full bg-purple-400 mr-2 animate-pulse"></span>
+                        <span>DESIGN</span>
+                    </button>
+                    <button onclick="filterSkills('soft')" class="flex items-center hover:text-blue-400 transition-colors">
+                        <span class="w-3 h-3 rounded-full bg-blue-400 mr-2 animate-pulse"></span>
+                        <span>SOFT SKILLS</span>
+                    </button>
+                    <button onclick="filterSkills('all')" class="flex items-center hover:text-white transition-colors">
+                        <span class="w-3 h-3 rounded-full bg-white mr-2"></span>
+                        <span>ALL</span>
+                    </button>
+                </div>
+            </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:your@email.com" style="color: var(--neon-blue)">your@email.com</a></p>
-    <p>Phone: <a href="tel:+16162623866" style="color: var(--neon-blue)">(616) 262-3866</a></p>
-  </section>
+            <!-- Enhanced Experience Timeline Section -->
+            <section id="experience" class="py-16 relative">
+                <div class="absolute -top-10 left-0 right-0 h-20 bg-gradient-to-b from-purple-900/50 to-transparent z-0"></div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 relative">
+                    <span class="text-purple-400">//</span> EXPERIENCE NODES
+                    <span class="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent"></span>
+                </h2>
+                
+                <div class="relative max-w-3xl mx-auto">
+                    <!-- Timeline Node 1 -->
+                    <div class="timeline-node mb-12">
+                        <div class="node-content holographic-card p-6 rounded-lg ml-8 transform transition-all duration-500 hover:rotate-x-6">
+                            <p class="node-date text-sm mb-2">2023 - PRESENT</p>
+                            <h3 class="text-xl font-bold mb-1">LEAD DEVELOPER</h3>
+                            <h4 class="text-md mb-3 text-blue-300">TECH CORP INC.</h4>
+                            <p class="mb-4">Leading a dynamic team in architecting and deploying cutting-edge web applications with React, Three.js, and Node.js.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="cyber-tag">JavaScript</span>
+                                <span class="cyber-tag">React</span>
+                                <span class="cyber-tag">Three.js</span>
+                                <span class="cyber-tag">Node.js</span>
+                                <span class="cyber-tag">WebGL</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Node 2 -->
+                    <div class="timeline-node mb-12">
+                        <div class="node-content holographic-card p-6 rounded-lg ml-8 transform transition-all duration-500 hover:rotate-x-6">
+                            <p class="node-date text-sm mb-2">2020 - 2023</p>
+                            <h3 class="text-xl font-bold mb-1">SENIOR FRONTEND DEVELOPER</h3>
+                            <h4 class="text-md mb-3 text-blue-300">DIGITAL CREATIVE AGENCY</h4>
+                            <p class="mb-4">Developed immersive web experiences and interactive 3D visualizations for high-profile clients.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="cyber-tag">React</span>
+                                <span class="cyber-tag">Three.js</span>
+                                <span class="cyber-tag">GSAP</span>
+                                <span class="cyber-tag">Web Animation</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Node 3 -->
+                    <div class="timeline-node mb-12">
+                        <div class="node-content holographic-card p-6 rounded-lg ml-8 transform transition-all duration-500 hover:rotate-x-6">
+                            <p class="node-date text-sm mb-2">2018 - 2020</p>
+                            <h3 class="text-xl font-bold mb-1">UI/UX DESIGNER & DEVELOPER</h3>
+                            <h4 class="text-md mb-3 text-blue-300">FREELANCE</h4>
+                            <p class="mb-4">Created visually stunning interfaces and interactive prototypes for startups and small businesses.</p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="cyber-tag">Figma</span>
+                                <span class="cyber-tag">UI Design</span>
+                                <span class="cyber-tag">Prototyping</span>
+                                <span class="cyber-tag">Frontend Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <div class="wrapper">
-    <a class="hover-fx" href="https://twitter.com"><img src="twitter.png" alt="Twitter"></a>
-    <a class="hover-fx" href="https://instagram.com"><img src="instagram.png" alt="Instagram"></a>
-    <a class="hover-fx" href="https://facebook.com"><img src="facebook-logo-2019.png" alt="Facebook"></a>
-    <a class="hover-fx" href="tel:616-262-3866"><img src="phone.png" alt="Phone"></a>
-    <a class="hover-fx" href="mailto:your@email.com"><img src="email.png" alt="Email"></a>
-  </div>
+            <!-- Enhanced Contact Terminal Section -->
+            <section id="contact" class="py-16 relative">
+                <div class="absolute -top-10 left-0 right-0 h-20 bg-gradient-to-b from-green-900/50 to-transparent z-0"></div>
+                
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 relative">
+                    <span class="text-green-400">//</span> CONTACT TERMINAL
+                    <span class="absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-green-400 to-transparent"></span>
+                </h2>
+                
+                <div class="cyber-terminal holographic-card max-w-2xl mx-auto rounded-lg overflow-hidden transform transition-all duration-500 hover:scale-101">
+                    <div class="terminal-header px-4 py-3 flex items-center bg-gradient-to-r from-blue-900/50 to-purple-900/50">
+                        <div class="terminal-buttons flex space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        </div>
+                        <div class="terminal-title text-center flex-grow text-sm font-mono text-blue-300">
+                            CONTACT_PROTOCOL.EXE
+                        </div>
+                    </div>
+                    <div class="terminal-body p-6 font-mono text-sm">
+                        <p class="text-green-400">> INITIATING CONTACT PROTOCOL...</p>
+                        <p class="text-blue-300 mb-4">> AVAILABLE CHANNELS ONLINE:</p>
+                        <div class="space-y-4">
+                            <a href="mailto:ebisa.bunti@example.com" class="cyber-link block hover:text-purple-400">
+                                <i class="fas fa-envelope text-red-400 mr-2"></i>
+                                <span>EBISA.BUNTI@EXAMPLE.COM</span>
+                            </a>
+                            <a href="https://github.com/Ebibunti1" class="cyber-link block hover:text-blue-400">
+                                <i class="fab fa-github text-purple-400 mr-2"></i>
+                                <span>GITHUB.COM/EBISABUNTI</span>
+                            </a>
+                            <a href="https://linkedin.com/in/ebisabunti" class="cyber-link block hover:text-green-400">
+                                <i class="fab fa-linkedin text-blue-400 mr-2"></i>
+                                <span>LINKEDIN.COM/IN/EBISABUNTI</span>
+                            </a>
+                        </div>
+                        <p class="mt-6 text-green-400">> <span class="animate-pulse">_</span></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
-  <footer>
-    <p>© 2025 Ebisa Bunti | Designed in cyberpunk spirit ⚡</p>
-  </footer>
+    <script type="module">
+        // --- DARK MODE TOGGLE FUNCTIONALITY ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or respect OS preference
+        const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            let theme = 'dark';
+            if (document.body.classList.contains('light-mode')) {
+                theme = 'light';
+            }
+            localStorage.setItem('theme', theme);
+            
+            // Update skill sphere labels for light mode
+            updateSkillLabels();
+        });
+
+        // Skill data
+        const skills = [
+            { name: 'JavaScript', color: 0x00ff85, category: 'coding' },
+            { name: 'React', color: 0x00ff85, category: 'coding' },
+            { name: 'Node.js', color: 0x00ff85, category: 'coding' },
+            { name: 'Three.js', color: 0x00ff85, category: 'coding' },
+            { name: 'Python', color: 0x00ff85, category: 'coding' },
+            { name: 'HTML5', color: 0x00ff85, category: 'coding' },
+            { name: 'CSS3', color: 0x00ff85, category: 'coding' },
+            { name: 'SQL', color: 0x00ff85, category: 'coding' },
+            { name: 'UI/UX', color: 0xd300c5, category: 'design' },
+            { name: 'Figma', color: 0xd300c5, category: 'design' },
+            { name: 'Photoshop', color: 0xd300c5, category: 'design' },
+            { name: 'Blender', color: 0xd300c5, category: 'design' },
+            { name: 'Teamwork', color: 0x05d9e8, category: 'soft' },
+            { name: 'Problem Solving', color: 0x05d9e8, category: 'soft' },
+            { name: 'Communication', color: 0x05d9e8, category: 'soft' },
+            { name: 'Creativity', color: 0x05d9e8, category: 'soft' },
+        ];
+
+        // Three.js variables
+        let scene, camera, renderer, skillSprites, controls;
+
+        // Initialize the skill sphere
+        function initSkillSphere() {
+            const container = document.getElementById('skillSphereContainer');
+            if (!container) return showFallbackSkills();
+
+            // Check WebGL support
+            if (!isWebGLSupported()) return showFallbackSkills();
+
+            try {
+                // Scene setup
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(
+                    75, 
+                    container.clientWidth / container.clientHeight, 
+                    0.1, 
+                    1000
+                );
+                
+                renderer = new THREE.WebGLRenderer({ 
+                    antialias: true, 
+                    alpha: true
+                });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                container.appendChild(renderer.domElement);
+                camera.position.z = 20;
+
+                // Create skill sprites
+                createSprites();
+
+                // Lighting
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+                scene.add(ambientLight);
+                
+                const pointLight = new THREE.PointLight(0xffffff, 0.5);
+                pointLight.position.set(5, 10, 15);
+                scene.add(pointLight);
+
+                // Controls
+                controls = new THREE.OrbitControls(camera, renderer.domElement);
+                controls.enableDamping = true;
+                controls.dampingFactor = 0.05;
+                controls.enableZoom = false;
+                controls.autoRotate = true;
+                controls.autoRotateSpeed = 0.5;
+
+                // Animation loop
+                function animate() {
+                    requestAnimationFrame(animate);
+                    controls.update();
+                    skillSprites.children.forEach(sprite => {
+                        sprite.quaternion.copy(camera.quaternion);
+                    });
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                });
+
+                removeLoadingIndicator();
+            } catch (error) {
+                console.error('Error initializing skill sphere:', error);
+                showFallbackSkills();
+            }
+        }
+
+        // Create skill sprites
+        function createSprites() {
+            skillSprites = new THREE.Group();
+            
+            skills.forEach((skill, index) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 256;
+                canvas.height = 128;
+                const context = canvas.getContext('2d');
+                
+                // Draw background
+                const isLightMode = document.body.classList.contains('light-mode');
+                context.fillStyle = isLightMode ? 'rgba(240, 240, 245, 0.7)' : 'rgba(13, 2, 33, 0.7)';
+                context.strokeStyle = `rgba(${new THREE.Color(skill.color).r * 255}, ${new THREE.Color(skill.color).g * 255}, ${new THREE.Color(skill.color).b * 255}, 0.8)`;
+                context.lineWidth = 4;
+                context.beginPath();
+                context.roundRect(10, 10, canvas.width-20, canvas.height-20, 20);
+                context.fill();
+                context.stroke();
+                
+                // Draw text
+                context.fillStyle = isLightMode ? '#1a1a2e' : 'white';
+                context.font = 'bold 24px "Share Tech Mono"';
+                context.textAlign = 'center';
+                context.textBaseline = 'middle';
+                
+                // Handle text wrapping
+                if (skill.name.length > 10 && skill.name.includes(' ')) {
+                    const words = skill.name.split(' ');
+                    context.fillText(words[0], canvas.width/2, canvas.height/2 - 15);
+                    context.fillText(words.slice(1).join(' '), canvas.width/2, canvas.height/2 + 15);
+                } else {
+                    context.fillText(skill.name, canvas.width/2, canvas.height/2);
+                }
+
+                // Create sprite
+                const texture = new THREE.CanvasTexture(canvas);
+                const material = new THREE.SpriteMaterial({ 
+                    map: texture,
+                    transparent: true
+                });
+                
+                const sprite = new THREE.Sprite(material);
+                sprite.scale.set(4, 2, 1);
+                
+                // Position in sphere
+                const phi = Math.acos(-1 + (2 * index) / skills.length);
+                const theta = Math.sqrt(skills.length * Math.PI) * phi;
+                sprite.position.setFromSphericalCoords(10, phi, theta);
+                
+                // Store reference to skill
+                sprite.userData = { skill };
+                skillSprites.add(sprite);
+            });
+            
+            scene.add(skillSprites);
+        }
+
+        // Function to update skill labels based on theme
+        function updateSkillLabels() {
+            const isLightMode = document.body.classList.contains('light-mode');
+            
+            if (skillSprites) {
+                skillSprites.children.forEach((sprite, index) => {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.width = 256;
+                    canvas.height = 128;
+                    
+                    // Set background and stroke based on mode
+                    context.fillStyle = isLightMode ? 'rgba(240, 240, 245, 0.7)' : 'rgba(13, 2, 33, 0.7)';
+                    context.strokeStyle = `rgba(${new THREE.Color(skills[index].color).r * 255}, ${new THREE.Color(skills[index].color).g * 255}, ${new THREE.Color(skills[index].color).b * 255}, 0.8)`;
+                    context.lineWidth = 4;
+                    context.beginPath();
+                    context.roundRect(10, 10, canvas.width-20, canvas.height-20, 20);
+                    context.fill();
+                    context.stroke();
+                    
+                    // Set text color based on mode
+                    context.fillStyle = isLightMode ? '#1a1a2e' : 'white';
+                    context.font = 'bold 24px "Share Tech Mono"';
+                    context.textAlign = 'center';
+                    context.textBaseline = 'middle';
+                    
+                    // Handle text wrapping
+                    if (skills[index].name.length > 10 && skills[index].name.includes(' ')) {
+                        const words = skills[index].name.split(' ');
+                        context.fillText(words[0], canvas.width/2, canvas.height/2 - 15);
+                        context.fillText(words.slice(1).join(' '), canvas.width/2, canvas.height/2 + 15);
+                    } else {
+                        context.fillText(skills[index].name, canvas.width/2, canvas.height/2);
+                    }
+
+                    // Update the texture
+                    const texture = new THREE.CanvasTexture(canvas);
+                    sprite.material.map = texture;
+                    sprite.material.needsUpdate = true;
+                });
+            }
+        }
+
+        // Check WebGL support
+        function isWebGLSupported() {
+            try {
+                const canvas = document.createElement('canvas');
+                return !!(window.WebGLRenderingContext && 
+                         (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+            } catch (e) {
+                return false;
+            }
+        }
+
+        // Remove loading indicator
+        function removeLoadingIndicator() {
+            const loadingEl = document.getElementById('loading');
+            if (loadingEl) loadingEl.remove();
+        }
+
+        // Show fallback skills
+        function showFallbackSkills() {
+            removeLoadingIndicator();
+            const fallbackEl = document.getElementById('fallback-skills');
+            if (!fallbackEl) return;
+            
+            fallbackEl.style.display = 'grid';
+            fallbackEl.innerHTML = '';
+            
+            skills.forEach(skill => {
+                const skillEl = document.createElement('div');
+                skillEl.className = `p-3 rounded text-center border ${
+                    skill.category === 'coding' ? 'border-green-400 bg-green-900/20' :
+                    skill.category === 'design' ? 'border-purple-400 bg-purple-900/20' :
+                    'border-blue-400 bg-blue-900/20'
+                }`;
+                skillEl.textContent = skill.name;
+                fallbackEl.appendChild(skillEl);
+            });
+        }
+
+        // Filter skills by category
+        window.filterSkills = function(category) {
+            if (skillSprites) {
+                // 3D view filtering
+                skillSprites.children.forEach(sprite => {
+                    sprite.visible = category === 'all' || sprite.userData.skill.category === category;
+                });
+            } else {
+                // Fallback view filtering
+                const skillElements = document.querySelectorAll('#fallback-skills > div');
+                skillElements.forEach(el => {
+                    const skillName = el.textContent;
+                    const skill = skills.find(s => s.name === skillName);
+                    if (skill) {
+                        el.style.display = (category === 'all' || skill.category === category) ? 'flex' : 'none';
+                    }
+                });
+            }
+        };
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Typewriter animation with data-text
+        const typewriterEl = document.querySelector('.typewriter');
+        if (typewriterEl) {
+            const text = typewriterEl.dataset.text || typewriterEl.textContent || '';
+            typewriterEl.textContent = text;
+        }
+
+        // Typewriter reset on visibility
+        if (typewriterEl) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        typewriterEl.style.animation = 'none';
+                        void typewriterEl.offsetWidth;
+                        typewriterEl.style.animation = '';
+                    }
+                });
+            });
+            const heroSection = document.querySelector('header');
+            if (heroSection) {
+                observer.observe(heroSection);
+            }
+        }
+
+        // Initialize when Three.js is loaded
+        if (typeof THREE !== 'undefined') {
+            document.addEventListener('DOMContentLoaded', initSkillSphere);
+        } else {
+            console.error('Three.js not loaded');
+            document.addEventListener('DOMContentLoaded', showFallbackSkills);
+        }
+
+        // Set timeout as fallback
+        setTimeout(() => {
+            if (document.getElementById('loading')) {
+                console.warn('Initialization timeout');
+                showFallbackSkills();
+            }
+        }, 5000);
+    </script>
 </body>
 </html>
